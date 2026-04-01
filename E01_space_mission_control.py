@@ -1,5 +1,5 @@
 missions = [] #list to store mission names
-mission_details = {} #dictionary to store details of each mission
+mission_details = {'Red Rock': {'Destination': 'Mars', 'Launch Date': '23.23.2333', 'Crew': 'John Rambo, Robin Hood'}, 'To The Moon': {'Destination': 'Earth Moon', 'Launch Date': '12.21.2321', 'Crew': 'John Rambo, Barrack Obama, Donald Trump'}} #dictionary to store details of each mission
 
 print(missions)
 print( mission_details)
@@ -7,6 +7,7 @@ print( mission_details)
 def add_mission(missions, mission_details, name, details):
     missions.append(name)
     mission_details[name] = details
+
 
     print(missions)
     print(mission_details)
@@ -24,7 +25,11 @@ def display_missions(missions, mission_details):
 
 def list_astronauts(mission_details):
     set_names = {}
-    pass
+    for mission in mission_details.values():
+        for astronaut in mission["Crew"].split(", "):
+            set_names[astronaut] = True
+    return set_names
+   
 
 # Main menu loop
 while True:
